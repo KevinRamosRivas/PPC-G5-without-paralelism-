@@ -350,7 +350,7 @@ public class GraficosCtr  implements ActionListener {
                         graficosui.pack();
                         graficosui.repaint();
                         long tiempoFinal = System.currentTimeMillis();
-                        System.out.println("Tiempo de ejecucion: " + (tiempoFinal - tiempoInicial) + " milisegundos");
+                        System.out.println("Tiempo de ejecucion: " + (tiempoFinal - tiempoInicial) + " ms");
 
                     
                     
