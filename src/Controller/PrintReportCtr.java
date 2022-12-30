@@ -6,6 +6,7 @@ package Controller;
 import Connection.ConnectionPool;
 import Interface.PrintReport;
 import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.event.ActionEvent;
@@ -58,6 +59,8 @@ public class PrintReportCtr implements ActionListener{
                     "/Downloads/ReporteLaboratorio_"+nameLab+".pdf"));
             documento.open();
             PdfPTable tabla = new PdfPTable(5);
+            Paragraph p = new Paragraph();
+            p.add("Reporte de laboratorio "+nameLab);
             tabla.addCell("id_pc");
             tabla.addCell("estado");
             tabla.addCell("id_lab");
@@ -75,6 +78,10 @@ public class PrintReportCtr implements ActionListener{
                     tabla.addCell(String.valueOf(resultList.get(i).get("fecha_mod")));
                     tabla.addCell(String.valueOf(resultList.get(i).get("obs")));
                 }
+                //añadir el parrafo al documento centrado y con un espacio de 20
+                p.setAlignment(Paragraph.ALIGN_CENTER);
+                p.setSpacingAfter(20);
+                documento.add(p);
                 documento.add(tabla);
 
             } catch (SQLException ex) {
